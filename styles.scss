@@ -1,0 +1,347 @@
+@charset "utf-8";
+*, *::before, *::after { 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  line-height: 1;
+  vertical-align: baseline;
+  list-style-type: none;
+  user-select: none; // add //
+}
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------
+//                          --- DEATH CARD ---
+//--------------------------------------------------------------------
+
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(84, 81, 81);
+}
+
+
+.game-message {
+  position: absolute;
+  z-index: 1;
+  font-size: 2.8rem; // before change 2.5
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 0 #fff, 3px -3px 0 #fff,
+  -3px 3px 0 #fff,-3px -3px 0 #fff;
+  font-family: 'Fredoka One', cursive;
+  font-family: 'Secular One', sans-serif;
+  font-family: 'Righteous', cursive;
+  display: none;
+}
+
+.game-clear {
+  color: rgb(0, 123, 255);
+}
+
+.game-over {
+  color: red;
+}
+
+.start-btn {
+  position: absolute;
+  z-index: 1;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: rgb(0, 0, 0);
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 10px 10px 8px;
+  opacity: .5;
+  margin-top: 50px;  // before change 100px
+  font-family: 'Fredoka One', cursive;
+  font-family: 'Righteous', cursive;
+  font-family: 'Secular One', sans-serif;
+  display: none;
+}
+
+// ------------------------------------
+
+.gauges-container {
+  position: absolute;
+  top: 7px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  @media (max-width:374px){ // max-width
+    top: 5px;
+  }
+  @media (min-width:710px),(min-height:710px){
+    top: 9px;
+  }
+  @media (min-width:765px){
+    top: 50px;
+  }
+  @media (min-width:810px){ // iPhoneX 
+    top: 9px;
+  }
+  @media (min-width:1020px){
+    top: 60px;
+  }
+  @media (min-width:1360px){
+    top: 90px;
+  }
+  @media (min-height:1360px){
+    top: 90px;
+    width: 80%;
+  }
+  @media (min-width:1370px){
+    top: 30px;
+    width: 600px;
+  } 
+  .unMatched-circle-wrapper {
+    width:60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    @media (min-width:730px){
+      width:40%;
+    }
+    @media (min-width:765px){
+      width:35%; 
+    }
+  }
+  .gauges-space {
+    width: 10%;
+  }
+  .deathCount-circle-wrapper {
+    width: 22%; // before change 20%
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    @media (min-width:730px){
+      width: 15%;
+    }
+    @media (min-width:810px){
+      width: 13%; 
+    }
+  }
+}
+
+.gauge-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: .1;
+}
+
+.hidden {  //.gauge-circle 
+  visibility: hidden;
+}
+
+.js_activeCircle {
+  background-color: red;
+  opacity: 1;
+}
+
+.js_fontStyleAdd {
+  // font-size: 2.8rem; // before change 2.5
+  font-family: 'Fredoka One', cursive;
+  font-family: 'Secular One', sans-serif;
+  font-family: 'Righteous', cursive;
+}
+.js_btnFontStyleAdd {
+  font-family: 'Fredoka One', cursive;
+  font-family: 'Righteous', cursive;
+  font-family: 'Secular One', sans-serif;
+}
+
+//----------------------------------------------
+
+.memory-game {  // container card-unit.
+  // border: 2px solid lime;
+  width: 95%; 
+  height: 95%; 
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px; // gauges on this active
+  -webkit-perspective: 1000px;
+  perspective: 1000px;  // 必ず container に添付する
+  @media (min-width:416px){
+    height: 90%; 
+  }
+  @media (min-width:765px){
+    width: 60%;
+    height: 80%;
+    margin-top: 0px;
+  }
+  @media (min-width:810px){
+    width: 95%;
+    height: 90%;
+    margin-top: 10px;
+  }
+  @media (min-width:1020px){
+    width: 90%;
+    height: 65%;
+  }
+  @media (min-height:1360px){
+    width: 55%;
+    height: 75%;
+  }
+  @media (min-width:1370px){
+    width: 600px;
+    height: 90%;
+  }
+  .memory-card {  // img-wrapper card.
+    // border: 2px solid #060ab2;
+    width: calc(25% - 6px);
+    height: calc(25% - 6px);
+    margin: 3px;  // marginを付ける事でレイアウトが崩れるのでcalcを使う!
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;  // 必ず img-wrapper に添付する
+    transition: transform .3s ease-in-out;
+    @media (min-width:416px){
+      width: calc(12.5% - 6px);
+      height: calc(50% - 6px);
+      margin: 3px
+    }
+    @media (min-width:765px){
+      width: calc(25% - 10px);
+      height: calc(25% - 10px);
+      margin: 5px;
+    }
+    @media (min-width:810px){
+      width: calc(12.5% - 6px);
+      height: calc(50% - 6px);
+      margin: 3px;
+    }
+    @media (min-height:1360px){
+      width: calc(25% - 6px);
+      height: calc(25% - 6px);
+      margin: 3px;
+    }
+    @media (min-width:1370px){
+      width: calc(25% - 6px);
+      height: calc(25% - 6px);
+      margin: 3px;
+    }
+    .front-face,
+    .back-face {  // img 
+      // border: 2px solid deeppink;
+      width: 100%;
+      height: 100%;
+      padding: 3px; 
+      position: absolute;
+      border-radius: 5px;
+      // background-color: rgb(126, 0, 0);
+      background-color: rgb(255, 255, 255);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;  // 必ず img に添付する
+      object-fit:cover;
+      @media (min-width:765px){
+        padding: 5px;
+      }
+      @media (min-width:810px){
+        padding: 3px;
+      }
+      @media (min-width:1020px){
+        padding: 5px;
+      }
+    }
+    .angel {
+      background: linear-gradient(rgb(252, 254, 152), rgb(252, 254, 152), #fff);
+      // background: linear-gradient(rgb(152, 244, 254), #fff);
+      // background: linear-gradient(rgb(152, 244, 254), rgb(152, 244, 254), #fff);
+    }
+    .death {
+      // background: linear-gradient(to top,
+      // rgb(6, 73, 27), #fff,#fff,#fff,#fff,#fff,#fff,#fff);
+      background: radial-gradient( #fff 70%,rgb(6, 73, 27));
+    }
+    .red {
+      background-color: red;
+    }
+    // .js_red {
+    //   background-color: red;
+    // }
+    .js_black {
+      background-color: rgb(45, 43, 43);
+    }
+    .blue {background-color: skyblue;} // joker Identify !
+    .green {background-color: green;}    // Identify !
+    .yellow {background-color: yellow;} // Identify !
+    .front-face {
+      // object-fit: cover;
+      padding: 3px; 
+      transform: rotateY(180deg) rotateX(50deg); 
+    // 必ず front-face に(.js_flipと 同じstyle)を 添付する 
+      @media (min-width:765px){
+        padding: 5px;
+      }
+      @media (min-width:810px){
+        padding: 3px;
+      }
+    }
+    // .large {
+    //   object-fit: cover;
+    //   @media (min-width:416px){
+    //     object-fit: initial;
+    //   }
+    // }
+    // .small {
+    //   @media (min-width:765px){
+    //     object-fit: initial;
+    //   }
+    //   @media (min-width:1020px){
+    //     object-fit: cover;
+    //   }
+    //   @media (min-width:1370px){
+    //     object-fit: initial;
+    //   }
+    //   @media (min-height:1360px){
+    //     object-fit: initial;
+    //   }
+    // }
+  }
+}
+
+.memory-card:active {
+  transform: scale(.9);
+  // transition: transform .3s;
+}
+
+.memory-card.js_flip {       // クラス付けは (ひな形とする)
+  transform: rotateY(180deg) rotateX(50deg); 
+}
+
+.js_displayBlock {
+  display: block;
+}
+//--------------------------------------------------------------------
+//-------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
