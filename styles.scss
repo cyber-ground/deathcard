@@ -39,7 +39,7 @@ body {
   letter-spacing: 1px;
   text-shadow: 3px 3px 0 #fff, 3px -3px 0 #fff,
   -3px 3px 0 #fff,-3px -3px 0 #fff;
-  opacity: 0;
+  visibility: hidden;
 }
 
 .game-clear {
@@ -62,7 +62,8 @@ body {
   border-radius: 20px;
   padding: 10px 10px 8px;
   margin-top: 100px; 
-  opacity: 0;
+  opacity: 0.5;
+  visibility: hidden;
 }
 
 // ------------------------------------
@@ -305,11 +306,8 @@ body {
   transform: rotateY(180deg) rotateX(50deg); 
 }
 
-.js_displayNone {
-  display: none;
-}
-.js_displayBlock {
-  display: block;
+.js_visible {
+  visibility: visible;
 }
 
 //--------------------------------------------------------------------
