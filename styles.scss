@@ -11,7 +11,7 @@
 @font-face {
   font-family: 'Secular-One';
   src: local('Secular One'), local('Secular-One'),
-  url('font/Secular-one.ttf') format('truetype');
+  url('font/Secular-One.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -25,6 +25,7 @@
 
 
 body {
+  font-family: 'Righteous';
   height: 100vh;
   display: flex;
   justify-content: center;
