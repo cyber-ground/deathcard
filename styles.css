@@ -18,14 +18,14 @@ body {
 }
 
 .game-message {
+  font-family: "Righteous";
   position: absolute;
   z-index: 1;
   font-size: 2.8rem;
   font-weight: bold;
   letter-spacing: 1px;
   text-shadow: 3px 3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, -3px -3px 0 #fff;
-  font-family: "Righteous";
-  display: none;
+  opacity: 0;
 }
 
 .game-clear {
@@ -37,6 +37,7 @@ body {
 }
 
 .start-btn {
+  font-family: "Secular-One";
   position: absolute;
   z-index: 1;
   font-size: 1.2rem;
@@ -46,10 +47,8 @@ body {
   background-color: #fff;
   border-radius: 20px;
   padding: 10px 10px 8px;
-  opacity: 0.5;
   margin-top: 100px;
-  font-family: "Secular-One";
-  display: none;
+  opacity: 0;
 }
 
 .gauges-container {
@@ -316,6 +315,10 @@ body {
 
 .memory-card.js_flip {
   transform: rotateY(180deg) rotateX(50deg);
+}
+
+.js_displayNone {
+  display: none;
 }
 
 .js_displayBlock {

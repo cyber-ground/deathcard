@@ -25,6 +25,14 @@ let firstCard, secondCard;
   let unMatched = 0;
 let deathCount = 0;
 
+function init() {
+  startBtn.classList.add('js_displayNone');
+  gameClearMessage.classList.add('js_displayNone');
+  gameOverMessage.classList.add('js_displayNone');
+  startBtn.style.opacity = 0.5;
+  gameClearMessage.style.opacity = 1;
+  gameOverMessage.style.opacity = 1;
+} init();
 
 //------------------------------------------
 // events ---
@@ -163,9 +171,11 @@ function deathCountCounter() {
 function gameClear() {
   if(matched === cards.length / 2 - 1) {  
     setTimeout(() => {                      
+      gameClearMessage.classList.remove('js_displayNone');
       gameClearMessage.classList.add('js_displayBlock');
       disableCards();
       setTimeout(() => {
+        startBtn.classList.remove('js_displayNone');
         startBtn.classList.add('js_displayBlock');
       }, 3000);
     }, 500);
@@ -173,6 +183,7 @@ function gameClear() {
 }
 
 function gameOver() {
+  gameOverMessage.classList.remove('js_displayNone');                               
   gameOverMessage.classList.add('js_displayBlock');                                
   disableCards();    
   setTimeout(() => {
@@ -180,6 +191,7 @@ function gameOver() {
       setInterval(() => { 
         colored(); 
       setTimeout(() => {
+        startBtn.classList.remove('js_displayNone');                                              
         startBtn.classList.add('js_displayBlock');                                                
       }, 3000);  // before change 5000
     }, 300);
@@ -412,7 +424,6 @@ shuffleCards();
 
 //---------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------
-
 
 
 

@@ -525,6 +525,7 @@
 	<path
         d="m123.52 205.05h0.96v0.96h-0.96v-0.96z"
     />
+
 	<path
         d="m77.922 222.33c-1.531-0.285-1.484 0.9-2.4 0 1.047-4.232 7.746-2.814 7.2-8.641 2.455-0.905 2.121-4.599 3.36-6.72 2.05 3.647-1.727 9.358-4.32 11.521-0.078 0.558 0.106 0.854 0.48 0.96-2.302 1.47-4.244-0.71-4.32 2.88z"
     />
@@ -763,7 +764,7 @@
         d="m99.522 195.45c-0.437 2.283-2.959 2.48-5.28 2.88 0.279-1.321 1.195-2.005 1.44-3.36-1.892-0.922-2.571 1.137-1.92 3.36-2.155-0.235-3.597 0.243-5.28 0.479-0.319-1.28-1.442-1.758-2.4-2.399-1.074-5.547 2.061-7.819 1.92-11.04 2.129-0.111 2.12-2.36 4.32-2.4 0.146-3.152-0.171-4.885 0.96-6.24-1.062-2.617-2.756-4.604-5.28-5.76 1.164-2.475-1.835-3.563-2.88-5.28 1.427-3.053 1.985-6.975 4.32-9.12 3.293-0.327 7.513-0.636 12-0.96 4.003 1.996 5.418 5.798 8.16 10.08 1.267 1.979 3.042 3.85 2.88 6.24-5 0.761-6.046 5.474-7.2 10.08-0.71-0.556-1.209-0.556-1.92 0 2.528 8.672 6.588 15.812 16.8 16.8 0.403 0.558 0.633 1.287 0.48 2.4 2.221 0.361 0.667-1.834 1.44-1.92h1.92c0.134 1.254 0.162 2.402-1.44 1.92 0.298 1.301 2.005 1.194 1.92 2.88 1.507-0.329 1.961 0.056 2.4-0.48 0.837 0.724-0.491 2.071 0.96 2.881 1.534-0.506 0-2.172 1.44-3.36 1.646-0.435 4.116-0.043 4.319-1.92 1.795 1.572 0.196 3.195 0 5.28 2.536 2.264 6.999 2.602 7.2 7.199-5.885 1.594-7.422-4.961-12.96-5.279-0.791-0.81-1.043-2.157-1.92-2.88-1.132 0.132 0.044 1.788 0.48 1.92-6.293-1.951-12.959 2.679-18.24 4.8-1.309-0.441 0.67-1.501 0-2.88 1.426-1.135 4.518-0.602 4.32-3.36 0.331-1.291-0.992-0.928-1.44-1.439 0.819-0.461 1.052-1.509 1.44-2.4 1.988 1.185 2.027 3.581 1.44 6.24 1.853-1.027 2.52-3.24 3.84-4.801 1.273-0.007 2.827 0.267 2.88-0.96 0.21-3.116-4.222-1.837-5.76-1.92-1.868-1.331-4.185-2.215-5.76-3.84-4.167-0.538-7.323 0.099-10.08-2.399 0.774-2.986-0.061-6.872-3.36-7.2 0.872 1.236 3.759 5.434 1.92 9.6 1.265 0.15 0.38-1.86 1.922-1.44zm-10.56-27.36c2.652 0.121 1.738-3.298 0.48-4.32 0.857-1.222 2.374-1.786 1.92-4.319 0.834-1.086 3.395-0.445 3.84-1.92-6.14-1.6-9.327 6.7-6.24 10.56zm10.56-10.56c0.037 1.562 2.175 1.024 3.36 1.439-0.39-1.62-2.06-1.97-3.358-1.44zm-3.359 17.28c-0.359 2.974-4.457 5.931-1.44 8.641 0.946-2.415 2.326-4.395 3.84-6.24-1.999-0.036 0.04-3.166 0.48-3.84-1.554-1.166-1.374-4.066-2.4-5.761h-1.44c0.003 2.93 1.277 4.57 0.96 7.2zm-5.281 12h3.84c-0.532-1.96-3.455-1.83-3.84 0zm-2.88 2.88c0.358 2.63 3.392 1.325 4.8 1.921 0.986 0.453 0.407 2.473 1.92 2.399 1.047 0.087 1.527-0.393 1.44-1.439-1.873-1.57-4.889-4.27-8.16-2.88zm0.96 4.8c0.539 0.102 0.747 0.532 0.96 0.96 1.71 0.109 2.51-0.69 2.4-2.4-1.176-1.03-3.55-0.35-3.36 1.44zm34.558 11.52h0.96v-0.96h-0.96v0.96zm-11.52 4.32c0.053-0.907 1.587-0.333 1.44-1.44-0.56-1.16-3.01 0.64-1.44 1.44zm23.04-1.44h-1.92c-0.1 1.57 2.26 1.9 1.92 0z"
     />
 	<path
-        d="m94.722 204.09c-1.715 0.364-2.562 1.598-2.88 3.36-1.004-0.437-1.463-1.417-1.44-2.88 0.886-1.328 5.452-1.554 5.76 0.479-0.963 0.17-1.501-0.09-1.44-0.96z"
+        d="m94.722 204.09c-1.715 0.364-2.562 1.598-2.88 3.36-1.004-0.437-1.463-1.417-1.44-2.88 0.886-1.328 5.452-1.554 5.76 0.479-0.963 0.17-1.501-0.09-1.44-0.96z "
     />
 	<path
         fill="#FFFFFF"
@@ -817,67 +818,43 @@
         fill="#FFFFFF"
         d="m229.12 264.57c1.112-8.223 9.926-5.477 9.12 0.479-0.125 0.922-1.168 3.443-2.88 3.84-3.87 0.9-3.95-2.65-6.24-4.32z"
     />
-</g
-  >
-<metadata
-    ><rdf:RDF
-      ><cc:Work
-        ><dc:format
-          >image/svg+xml</dc:format
-        ><dc:type
-            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
-        /><cc:license
-            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
-        /><dc:publisher
-          ><cc:Agent
-              rdf:about="http://openclipart.org/"
-            ><dc:title
-              >Openclipart</dc:title
-            ></cc:Agent
-          ></dc:publisher
-        ><dc:title
-          >skeleton</dc:title
-        ><dc:date
-          >2006-11-04T20:11:26</dc:date
-        ><dc:description
-          >a skeleton image commonly used as a paper door decoration from "Scan This Book"</dc:description
-        ><dc:source
-          >https://openclipart.org/detail/1258/skeleton-by-johnny_automatic</dc:source
-        ><dc:creator
-          ><cc:Agent
-            ><dc:title
-              >johnny_automatic</dc:title
-            ></cc:Agent
-          ></dc:creator
-        ><dc:subject
-          ><rdf:Bag
-            ><rdf:li
-              >bones</rdf:li
-            ><rdf:li
-              >decoration</rdf:li
-            ><rdf:li
-              >externalsource</rdf:li
-            ><rdf:li
-              >halloween</rdf:li
-            ><rdf:li
-              >holiday</rdf:li
-            ><rdf:li
-              >human</rdf:li
-            ><rdf:li
-              >skeleton</rdf:li
-            ></rdf:Bag
-          ></dc:subject
-        ></cc:Work
-      ><cc:License
-          rdf:about="http://creativecommons.org/licenses/publicdomain/"
-        ><cc:permits
-            rdf:resource="http://creativecommons.org/ns#Reproduction"
-        /><cc:permits
-            rdf:resource="http://creativecommons.org/ns#Distribution"
-        /><cc:permits
-            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
-        /></cc:License
-      ></rdf:RDF
-    ></metadata
-  ></svg
->
+</g>
+<metadata>
+<rdf:RDF>
+<cc:Work>
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+<dc:publisher>
+<cc:Agent rdf:about="http://openclipart.org/">
+<dc:title>Openclipart</dc:title>
+</cc:Agent>
+</dc:publisher>
+<dc:title>skeleton</dc:title>
+<dc:date>2006-11-04T20:11:26</dc:date>
+<dc:description>a skeleton image commonly used as a paper door decoration from "Scan This Book"</dc:description>
+<dc:source>https://openclipart.org/detail/1258/skeleton-by-johnny_automatic</dc:source>
+<dc:creator>
+<cc:Agent>
+<dc:title>johnny_automatic</dc:title>
+</cc:Agent>
+</dc:creator>
+<dc:subject><rdf:Bag>
+<rdf:li>bones</rdf:li>
+<rdf:li>decoration</rdf:li>
+<rdf:li>externalsource</rdf:li>
+<rdf:li>halloween</rdf:li>
+<rdf:li>holiday</rdf:li>
+<rdf:li>human</rdf:li>
+<rdf:li>skeleton</rdf:li>
+</rdf:Bag>
+</dc:subject>
+</cc:Work>
+<cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+<cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+<cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+<cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+</cc:License>
+</rdf:RDF>
+</metadata>
+</svg>
