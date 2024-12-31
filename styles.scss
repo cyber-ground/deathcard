@@ -22,11 +22,12 @@
 
 body {
   font-family: 'Righteous';
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(84, 81, 81);
+  overflow: hidden;
 }
 
 
@@ -61,9 +62,13 @@ body {
   background-color: #fff;
   border-radius: 20px;
   padding: 10px 10px 8px;
-  margin-top: 100px; 
+  margin-top: 10px; 
+  // margin-top: 100px; 
   opacity: 0.5;
   visibility: hidden;
+  &.active {
+    margin-top: 100px; 
+  }
 }
 
 // ------------------------------------
@@ -242,12 +247,8 @@ body {
     }
     .angel {
       background: linear-gradient(rgb(252, 254, 152), rgb(252, 254, 152), #fff);
-      // background: linear-gradient(rgb(152, 244, 254), #fff);
-      // background: linear-gradient(rgb(152, 244, 254), rgb(152, 244, 254), #fff);
     }
     .death {
-      // background: linear-gradient(to top,
-      // rgb(6, 73, 27), #fff,#fff,#fff,#fff,#fff,#fff,#fff);
       background: radial-gradient( #fff 70%,rgb(6, 73, 27));
     }
     .red {
