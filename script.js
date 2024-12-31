@@ -32,7 +32,8 @@ var bgmHowl = new Howl({src: ['mp3/bgm.mp3'], loop: true, volume: 0.1});
 var flipCardHowl = new Howl({src: ['mp3/flipCard.mp3'], volume: 0.5});
 var unmatchedHowl = new Howl({src: ['mp3/unmatched.mp3'], volume: 0.5});
 var matchedHowl = new Howl({src: ['mp3/matched.mp3'], volume: 1});
-var angelsHowl = new Howl({src: ['mp3/angels.mp3'], volume: 0.2});
+var firstAngelHowl = new Howl({src: ['mp3/firstAngel.mp3'], volume: 0.2});
+var secondAngelHowl = new Howl({src: ['mp3/secondAngel.mp3'], volume: 0.2});
 var survivedHowl = new Howl({src: ['mp3/survived.mp3'], volume: 0.3});
 var gameClearHowl = new Howl({src: ['mp3/gameClear.mp3'], volume: 0.3});
 var firstDeathCardHowl = new Howl({src: ['mp3/firstDeathCard.mp3'], volume: 0.3});
@@ -118,6 +119,7 @@ function matchedCards() {
 function unMatchedCards() {
   lockBoard = true;
   tid_unmatchedHowl = setTimeout(() => { unmatchedHowl.play() }, 1000);
+  if(secondCard.dataset.framework === 'angel') { secondAngelHowl.play()}
   setTimeout(() => {
     firstCard.classList.remove('js_flip'); 
     secondCard.classList.remove('js_flip'); 
@@ -249,7 +251,7 @@ function disableCards() {
 function angelFlipped() { // firstCard angel flipped
   if(firstCard.dataset.framework === 'angel') {
     lockBoard = true;
-    setTimeout(() => angelsHowl.play(), 300);
+    setTimeout(() => firstAngelHowl.play(), 300);
     setTimeout(() => {
       firstCard.classList.remove('js_flip');
       firstCard = null;
@@ -283,7 +285,7 @@ function angelRelease() { // secondCard angel flipped
   if(secondCard.dataset.framework === 'angel') {
     unMatched--;
     circles[unMatched].classList.remove('js_activeCircle');
-    console.log('angel-released-unMatched = ' + unMatched);
+    console.log('angel-released-unMatched = ' + unMatched); //* log
   }
 }
 
