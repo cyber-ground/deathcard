@@ -158,7 +158,7 @@ body {
   opacity: 1;
 }
 
-.memory-game {
+.card-unit {
   width: 95%;
   height: 95%;
   display: flex;
@@ -168,88 +168,91 @@ body {
   perspective: 1000px;
 }
 @media (min-width: 416px) {
-  .memory-game {
+  .card-unit {
     height: 90%;
   }
 }
 @media (min-width: 765px) {
-  .memory-game {
+  .card-unit {
     width: 60%;
     height: 80%;
     margin-top: 0px;
   }
 }
 @media (min-width: 810px) {
-  .memory-game {
+  .card-unit {
     width: 95%;
     height: 90%;
     margin-top: 10px;
   }
 }
 @media (min-width: 1020px) {
-  .memory-game {
+  .card-unit {
     width: 90%;
     height: 65%;
   }
 }
 @media (min-height: 1360px) {
-  .memory-game {
+  .card-unit {
     width: 55%;
     height: 75%;
   }
 }
 @media (min-width: 1370px) {
-  .memory-game {
+  .card-unit {
     width: 600px;
     height: 90%;
   }
 }
-.memory-game .memory-card {
+.card-unit .card {
+  position: relative;
   width: calc(25% - 6px);
   height: calc(25% - 6px);
   margin: 3px;
-  position: relative;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-in-out;
 }
+.card-unit .card:active {
+  transform: scale(0.9);
+}
 @media (min-width: 416px) {
-  .memory-game .memory-card {
+  .card-unit .card {
     width: calc(12.5% - 6px);
     height: calc(50% - 6px);
     margin: 3px;
   }
 }
 @media (min-width: 765px) {
-  .memory-game .memory-card {
+  .card-unit .card {
     width: calc(25% - 10px);
     height: calc(25% - 10px);
     margin: 5px;
   }
 }
 @media (min-width: 810px) {
-  .memory-game .memory-card {
+  .card-unit .card {
     width: calc(12.5% - 6px);
     height: calc(50% - 6px);
     margin: 3px;
   }
 }
 @media (min-height: 1360px) {
-  .memory-game .memory-card {
+  .card-unit .card {
     width: calc(25% - 6px);
     height: calc(25% - 6px);
     margin: 3px;
   }
 }
 @media (min-width: 1370px) {
-  .memory-game .memory-card {
+  .card-unit .card {
     width: calc(25% - 6px);
     height: calc(25% - 6px);
     margin: 3px;
   }
 }
-.memory-game .memory-card .front-face,
-.memory-game .memory-card .back-face {
+.card-unit .card .front-face,
+.card-unit .card .back-face {
   width: 100%;
   height: 100%;
   padding: 3px;
@@ -261,64 +264,51 @@ body {
   object-fit: cover;
 }
 @media (min-width: 765px) {
-  .memory-game .memory-card .front-face,
-  .memory-game .memory-card .back-face {
+  .card-unit .card .front-face,
+  .card-unit .card .back-face {
     padding: 5px;
   }
 }
 @media (min-width: 810px) {
-  .memory-game .memory-card .front-face,
-  .memory-game .memory-card .back-face {
+  .card-unit .card .front-face,
+  .card-unit .card .back-face {
     padding: 3px;
   }
 }
 @media (min-width: 1020px) {
-  .memory-game .memory-card .front-face,
-  .memory-game .memory-card .back-face {
+  .card-unit .card .front-face,
+  .card-unit .card .back-face {
     padding: 5px;
   }
 }
-.memory-game .memory-card .angel {
+.card-unit .card .angel {
   background: linear-gradient(rgb(252, 254, 152), rgb(252, 254, 152), #fff);
 }
-.memory-game .memory-card .death {
+.card-unit .card .death {
   background: radial-gradient(#fff 70%, rgb(6, 73, 27));
 }
-.memory-game .memory-card .red {
+.card-unit .card .red {
   background-color: red;
 }
-.memory-game .memory-card .js_black {
+.card-unit .card .js_black {
   background-color: rgb(45, 43, 43);
 }
-.memory-game .memory-card .blue {
-  background-color: skyblue;
-}
-.memory-game .memory-card .green {
-  background-color: green;
-}
-.memory-game .memory-card .yellow {
-  background-color: yellow;
-}
-.memory-game .memory-card .front-face {
+.card-unit .card .front-face {
   padding: 3px;
   transform: rotateY(180deg) rotateX(50deg);
 }
 @media (min-width: 765px) {
-  .memory-game .memory-card .front-face {
+  .card-unit .card .front-face {
     padding: 5px;
   }
 }
 @media (min-width: 810px) {
-  .memory-game .memory-card .front-face {
+  .card-unit .card .front-face {
     padding: 3px;
   }
 }
 
-.memory-card:active {
-  transform: scale(0.9);
-}
-
-.memory-card.js_flip {
+.card.js_flip {
   transform: rotateY(180deg) rotateX(50deg);
 }
 

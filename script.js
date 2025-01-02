@@ -1,5 +1,6 @@
 'use strict';
-
+import {console_color,console_red,console_orange,console_yellow,console_green,
+  console_blue,console_purple,console_magenta,console_cyan} from './logColor.js';
 
 
 //---------------------------------------------------------------------------------------------------
@@ -7,39 +8,39 @@
 //---------------------------------------------------------------------------------------------------
 
 
-const cards = document.querySelectorAll('.memory-card');
+const cards = document.querySelectorAll('.card');
   const backFaces = document.querySelectorAll('.back-face');
-  const gameClearMessage = document.querySelector('.game-clear');
-    const gameOverMessage = document.querySelector('.game-over');
-      const startBtn = document.querySelector('.start-btn');
-      const angel = document.querySelector('.angel');
-    const death = document.querySelector('.death');
+    const gameClearMessage = document.querySelector('.game-clear');
+      const gameOverMessage = document.querySelector('.game-over');
+    const startBtn = document.querySelector('.start-btn');
   const circles = document.querySelectorAll('.unMatched-circle');
 const dots = document.querySelectorAll('.deathCount-circle');
 
 let firstCard, secondCard;
   let hasFlippedCard = false; 
     let lockBoard = false;
-    let matched = 0;
+  let gameStart = false;
+  let matched = 0;
   let unMatched = 0;
-let deathCount = 0;
-let gameStart = false;
-let tid_unmatchedHowl; 
-let iid_Colored;
-let id_bgmHowl;
+  let deathCount = 0;
+  let tid_unmatchedHowl; 
+  let tid_hauntedHowl;
+  let iid_colored;
+  let id_bgmHowl;
 
 var bgmHowl = new Howl({src: ['mp3/bgm.mp3'], loop: true, volume: 0.1});
 var flipCardHowl = new Howl({src: ['mp3/flipCard.mp3'], volume: 0.5});
 var unmatchedHowl = new Howl({src: ['mp3/unmatched.mp3'], volume: 0.5});
 var matchedHowl = new Howl({src: ['mp3/matched.mp3'], volume: 1});
-var firstAngelHowl = new Howl({src: ['mp3/firstAngel.mp3'], volume: 0.2});
-var secondAngelHowl = new Howl({src: ['mp3/secondAngel.mp3'], volume: 0.2});
-var survivedHowl = new Howl({src: ['mp3/survived.mp3'], volume: 0.3});
+var saviorHowl = new Howl({src: ['mp3/savior.mp3'], volume: 0.2});
+var guidanceHowl = new Howl({src: ['mp3/guidance.mp3'], volume: 0.2});
+var providenceHowl = new Howl({src: ['mp3/providence.mp3'], volume: 0.3});
 var gameClearHowl = new Howl({src: ['mp3/gameClear.mp3'], volume: 0.3});
-var firstDeathCardHowl = new Howl({src: ['mp3/firstDeathCard.mp3'], volume: 0.3});
-var secondDeathCardHowl = new Howl({src: ['mp3/secondDeathCard.mp3'], volume: 0.5});
-var unmatchedGameOverHowl = new Howl({src: ['mp3/unmatchedGameOver.mp3'], volume: 1});
+var badOmenHowl = new Howl({src: ['mp3/badOmen.mp3'], volume: 0.3});
+var deathHowl = new Howl({src: ['mp3/death.mp3'], volume: 0.5});
+var prologueHowl = new Howl({src: ['mp3/prologue.mp3'], volume: 1});
 var gameOverHowl = new Howl({src: ['mp3/gameOver.mp3'], volume: 0.3});
+var hauntedHowl = new Howl({src: ['mp3/haunted.mp3'], volume: 0.3});
 
 //------------------------------------------
 //* game start & flip card ---
@@ -51,8 +52,9 @@ startBtn.addEventListener('click', function () {
   startBtn.classList.add('active');
   cards.forEach(card => {card.addEventListener('click', flipCard)});
   if(gameStart) {
-    clearInterval(iid_Colored);
-    gameOverHowl.stop(); gameClearHowl.stop();
+    clearInterval(iid_colored);
+    clearTimeout(tid_hauntedHowl);
+    gameClearHowl.stop(); gameOverHowl.stop(); hauntedHowl.stop();
     backFaces.forEach(backFace => backFace.classList.remove('js_black'));
     circles.forEach(circle => circle.classList.remove('js_activeCircle'));
     dots.forEach(dot => dot.classList.remove('js_activeCircle'));
@@ -80,13 +82,13 @@ function flipCard() {
   if(!hasFlippedCard) {
     hasFlippedCard = true;
     firstCard = this;
-    angelFlipped(); 
+    firstCardAngelFlip(); 
     firstCardDeathFlip(); 
   } else {
     hasFlippedCard = false;
     secondCard = this;
     checkForMatch();
-    secondCardDeathFlipped(); 
+    secondCardDeathFlip(); 
   }
 }
 
@@ -111,29 +113,29 @@ function matchedCards() {
   if(deathCount <= 0) {deathCount = 0}
   dots[deathCount].classList.remove('js_activeCircle'); 
     gameClear();
-  console.log('card-matched = ' + matched); //* log
-  console.log('matched-release-deathCount = ' + deathCount); //* log
-  console.log('matched-release-unMatched =  ' + unMatched); //* log
+  // console.log('card-matched = ' + matched); //* log
+  // console.log('matched-release-deathCount = ' + deathCount); //* log
+  // console.log('matched-release-unMatched =  ' + unMatched); //* log
 }
 
 function unMatchedCards() {
   lockBoard = true;
   tid_unmatchedHowl = setTimeout(() => { unmatchedHowl.play() }, 1000);
-  if(secondCard.dataset.framework === 'angel') { secondAngelHowl.play()}
+  if(secondCard.dataset.framework === 'angel') { guidanceHowl.play()}
   setTimeout(() => {
     firstCard.classList.remove('js_flip'); 
     secondCard.classList.remove('js_flip'); 
-      lockBoard = false;
-      firstCard = null;
+    lockBoard = false;
+    firstCard = null;
     unMatched++; 
-    if(unMatched === 1) { // angel release 3 version
+    if(unMatched === 1) { 
       circles[0].classList.add('js_activeCircle');
     } 
-    circles[unMatched - 1].classList.add('js_activeCircle'); // angel release 3 version
-    angelRelease(); 
+    circles[unMatched - 1].classList.add('js_activeCircle'); 
+    secondCardAngelFlip(); 
     gameOverCounter();
   }, 1000);
-  console.log('unmatched card = ' + unMatched); //* log
+  // console.log('unmatched card = ' + unMatched); //* log
 }
 
 //------------------------------------------
@@ -154,34 +156,28 @@ function firstCardDeathFlip() {
       lockBoard = false;
       firstCard = null;
       hasFlippedCard = false; 
-      setTimeout(() => {
-        colored();
-        shuffleCards();
-      }, 500);
     }, 1000);
-    console.log('deathCount = ' + deathCount); //* log
+    setTimeout(() => { colored(); shuffleCards()}, 1500);
+    // console.log('deathCount = ' + deathCount); //* log
   }
 }
 
 function deathCardHowl() {
-  if(deathCount > 1) { setTimeout(() => secondDeathCardHowl.play(), 500)} 
-  else { setTimeout(() => firstDeathCardHowl.play(), 500)}
+  if(deathCount > 1) { setTimeout(() => deathHowl.play(), 500)} 
+  else { setTimeout(() => badOmenHowl.play(), 500)}
 }
 
-function secondCardDeathFlipped() {
+function secondCardDeathFlip() {
   if(secondCard.dataset.framework === 'death card') {
     deathCount++;
     deathCardHowl();
     if(deathCount === 1) {
       dots[0].classList.add('js_activeCircle');
     } 
-    dots[deathCount - 1].classList.add('js_activeCircle'); 
+    dots[deathCount - 1].classList.add('js_activeCircle');
     deathCountCounter();
-    setTimeout(() => {
-      colored(); //*
-      shuffleCards();
-    }, 1500);
-    console.log('deathCount = ' + deathCount); //* log
+    setTimeout(() => { colored(); shuffleCards()}, 1500);
+    // console.log('deathCount = ' + deathCount); //* log
   }
 }
 
@@ -203,34 +199,31 @@ function deathCountCounter() {
 
 function gameClear() {
   if(matched === cards.length / 2 - 1) {
+    disableCards();
     bgmHowl.fade(0.1, 0, 1000, id_bgmHowl);
-    setTimeout(() => { 
-      let id_survivedHowl = survivedHowl.play(); 
-      survivedHowl.fade(0.3, 0, 7800, id_survivedHowl) 
+    setTimeout(() => { gameClearMessage.classList.add('js_visible')}, 500);
+    setTimeout(() => startBtn.classList.add('js_visible'), 3500);
+    setTimeout(() => { gameClearHowl.play()}, 5500);
+    setTimeout(() => { let id_providenceHowl = providenceHowl.play(); 
+      providenceHowl.fade(0.3, 0, 7800, id_providenceHowl) 
     }, 800);
-    setTimeout(() => {
-      disableCards();
-      gameClearMessage.classList.add('js_visible');
-      setTimeout(() => { gameClearHowl.play()}, 5500);
-      setTimeout(() => startBtn.classList.add('js_visible'), 3000);
-    }, 500);
   }
 }
 
 function gameOver() {
+  disableCards();
   clearTimeout(tid_unmatchedHowl);
   bgmHowl.fade(0.1, 0, 2000, id_bgmHowl);
-  if(deathCount <= 1) {
-    unmatchedGameOverHowl.play();
-    setTimeout(() => gameOverHowl.play(), 1800);
-  } else { setTimeout(() => gameOverHowl.play(), 900)}
   gameOverMessage.classList.add('js_visible');
-  disableCards();
-  setTimeout(() => {
-    colored(); 
-    setTimeout(() => startBtn.classList.add('js_visible'), 3000);
-    iid_Colored = setInterval(() => colored(), 500);
-  }, 500);
+  if(deathCount <= 1) {
+    prologueHowl.play();
+    setTimeout(() => gameOverHowl.play(), 1800);
+  } else { 
+    setTimeout(() => gameOverHowl.play(), 900); 
+    tid_hauntedHowl = setTimeout(() => hauntedHowl.play(), 17700);
+  }
+  setTimeout(() => iid_colored = setInterval(() => colored(), 800), 500);
+  setTimeout(() => startBtn.classList.add('js_visible'), 3500);
 }
 
 function gameOverCounter() {   
@@ -248,10 +241,10 @@ function disableCards() {
 //------------------------------------------
 //* angel actions ---
 
-function angelFlipped() { // firstCard angel flipped
+function firstCardAngelFlip() { 
   if(firstCard.dataset.framework === 'angel') {
     lockBoard = true;
-    setTimeout(() => firstAngelHowl.play(), 300);
+    setTimeout(() => saviorHowl.play(), 300);
     setTimeout(() => {
       firstCard.classList.remove('js_flip');
       firstCard = null;
@@ -266,26 +259,21 @@ function angelFlipped() { // firstCard angel flipped
         lockBoard = false;
       }, 500);
     }, 1000);
-
     deathCount--;
     if(deathCount <= 0) {deathCount = 0}
-    dots[deathCount].classList.remove('js_activeCircle'); // deathCount release //
-    // unMatched = 0; // angel release all gauge version // default unMatched -= 3; 
+    dots[deathCount].classList.remove('js_activeCircle'); // release deathCount  
     if(unMatched <= 0) {unMatched = 0}
-    // circles.forEach(circle => { // angel release all gauge version //
-    //   circle.classList.remove('js_activeCircle');
-    // });
       gaugesResetter();
-    console.log('angel-release-unMatched = ' + unMatched); //* log
-    console.log('angel-release-deathCount = ' + deathCount); //* log
+    // console.log('angel-release-unMatched = ' + unMatched); //* log
+    // console.log('angel-release-deathCount = ' + deathCount); //* log
   }
 }
 
-function angelRelease() { // secondCard angel flipped 
+function secondCardAngelFlip() { 
   if(secondCard.dataset.framework === 'angel') {
     unMatched--;
     circles[unMatched].classList.remove('js_activeCircle');
-    console.log('angel-released-unMatched = ' + unMatched); //* log
+    // console.log('angel-released-unMatched = ' + unMatched); //* log
   }
 }
 
