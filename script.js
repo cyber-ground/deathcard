@@ -7,7 +7,7 @@ import {console_color,console_red,console_orange,console_yellow,console_green,
 //*                                     ----- DEATH CARD -----
 //---------------------------------------------------------------------------------------------------
 
-
+  const container = document.querySelector('.container');
 const cards = document.querySelectorAll('.card');
   const backFaces = document.querySelectorAll('.back-face');
     const gameClearMessage = document.querySelector('.game-clear');
@@ -20,6 +20,8 @@ let firstCard, secondCard;
   let hasFlippedCard = false; 
     let lockBoard = false;
   let gameStart = false;
+  let touch = false;
+  let startGame = false;
   let matched = 0;
   let unMatched = 0;
   let deathCount = 0;
@@ -42,7 +44,36 @@ var prologueHowl = new Howl({src: ['mp3/prologue.mp3'], volume: 1});
 var gameOverHowl = new Howl({src: ['mp3/gameOver.mp3'], volume: 0.3});
 var hauntedHowl = new Howl({src: ['mp3/haunted.mp3'], volume: 0.3});
 
-//------------------------------------------
+//* touchCalloutPreventionEvents ---
+container.addEventListener('touchstart', e => e.preventDefault());
+cards.forEach(card => {
+  card.addEventListener('touchstart', e => e.preventDefault());
+});
+gameClearMessage.addEventListener('touchstart', e => e.preventDefault());
+gameOverMessage.addEventListener('touchstart', e => e.preventDefault());
+
+startBtn.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  startBtn.click();
+});
+
+  const imgs = document.querySelectorAll('img');
+imgs.forEach(img => {
+  img.addEventListener('touchstart', (e) => {
+    if(startGame) {
+      if(!touch) { touch = true; e.stopPropagation()}
+    }
+  });
+  img.addEventListener('mousedown', () => {
+    img.style.pointerEvents = 'none';
+    setTimeout(() => { img.style.pointerEvents = 'all'}, 500);
+  });
+  img.addEventListener('touchend', () => {
+    setTimeout(() => { touch = false}, 150);
+  });
+});
+
+//* --------------------------------------------------------
 //* game start & flip card ---
 
   startBtn.classList.add('js_visible'); //*>
@@ -72,6 +103,7 @@ startBtn.addEventListener('click', function () {
     deathCount = 0;
   }
   gameStart = true; //*
+  startGame = true; //* forTouch
 });
 
 function flipCard() {
@@ -200,6 +232,8 @@ function deathCountCounter() {
 function gameClear() {
   if(matched === cards.length / 2 - 1) {
     disableCards();
+    startGame = false;
+    firstCard = null;
     bgmHowl.fade(0.1, 0, 1000, id_bgmHowl);
     setTimeout(() => { gameClearMessage.classList.add('js_visible')}, 500);
     setTimeout(() => startBtn.classList.add('js_visible'), 3500);
@@ -212,6 +246,7 @@ function gameClear() {
 
 function gameOver() {
   disableCards();
+  startGame = false;
   clearTimeout(tid_unmatchedHowl);
   bgmHowl.fade(0.1, 0, 2000, id_bgmHowl);
   gameOverMessage.classList.add('js_visible');

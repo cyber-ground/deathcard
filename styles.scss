@@ -152,138 +152,146 @@ body {
 
 //----------------------------------------------
 
-.card-unit { 
-  width: 95%; 
-  height: 95%; 
+.container {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px; // for gauges 
-  -webkit-perspective: 1000px;
-  perspective: 1000px;  
-  @media (min-width:416px){
-    height: 90%; 
-  }
-  @media (min-width:765px){
-    width: 60%;
-    height: 80%;
-    margin-top: 0px;
-  }
-  @media (min-width:810px){
-    width: 95%;
-    height: 90%;
-    margin-top: 10px;
-  }
-  @media (min-width:1020px){
-    width: 90%;
-    height: 65%;
-  }
-  @media (min-height:1360px){
-    width: 55%;
-    height: 75%;
-  }
-  @media (min-width:1370px){
-    width: 600px;
-    height: 90%;
-  }
-  .card { 
-    position: relative;
-    width: calc(25% - 6px); //*>
-    height: calc(25% - 6px); //*> margin x2
-    margin: 3px; //*> calc to decrease margin
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    transition: transform .3s ease-in-out;
-    &:active {
-      transform: scale(.9);
-    }
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  .card-unit { 
+    width: 95%; 
+    height: 95%; 
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px; // for gauges 
+    -webkit-perspective: 1000px;
+    perspective: 1000px;  
     @media (min-width:416px){
-      width: calc(12.5% - 6px);
-      height: calc(50% - 6px);
-      margin: 3px
+      height: 90%; 
     }
     @media (min-width:765px){
-      width: calc(25% - 10px);
-      height: calc(25% - 10px);
-      margin: 5px;
+      width: 60%;
+      height: 80%;
+      margin-top: 0px;
     }
     @media (min-width:810px){
-      width: calc(12.5% - 6px);
-      height: calc(50% - 6px);
-      margin: 3px;
+      width: 95%;
+      height: 90%;
+      margin-top: 10px;
+    }
+    @media (min-width:1020px){
+      width: 90%;
+      height: 65%;
     }
     @media (min-height:1360px){
-      width: calc(25% - 6px);
-      height: calc(25% - 6px);
-      margin: 3px;
+      width: 55%;
+      height: 75%;
     }
     @media (min-width:1370px){
-      width: calc(25% - 6px);
-      height: calc(25% - 6px);
-      margin: 3px;
+      width: 600px;
+      height: 90%;
     }
-    .front-face,
-    .back-face { 
-      width: 100%;
-      height: 100%;
-      padding: 3px; 
-      position: absolute;
-      border-radius: 5px;
-      background-color: rgb(255, 255, 255);
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      object-fit:cover;
+    .card { 
+      position: relative;
+      width: calc(25% - 6px); //*>
+      height: calc(25% - 6px); //*> margin x2
+      margin: 3px; //*> calc to decrease margin
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      transition: transform .3s ease-in-out;
+      &:active {
+        transform: scale(.9);
+      }
+      @media (min-width:416px){
+        width: calc(12.5% - 6px);
+        height: calc(50% - 6px);
+        margin: 3px
+      }
       @media (min-width:765px){
-        padding: 5px;
+        width: calc(25% - 10px);
+        height: calc(25% - 10px);
+        margin: 5px;
       }
       @media (min-width:810px){
-        padding: 3px;
+        width: calc(12.5% - 6px);
+        height: calc(50% - 6px);
+        margin: 3px;
       }
-      @media (min-width:1020px){
-        padding: 5px;
+      @media (min-height:1360px){
+        width: calc(25% - 6px);
+        height: calc(25% - 6px);
+        margin: 3px;
       }
-    }
-    .angel {
-      background: linear-gradient(rgb(252, 254, 152), rgb(252, 254, 152), #fff);
-    }
-    .death {
-      background: radial-gradient( #fff 70%,rgb(6, 73, 27));
-    }
-    .red {
-      background-color: red;
-    }
-    .js_black {
-      background-color: rgb(45, 43, 43);
-    }
-    .front-face {
-      padding: 3px; 
-      transform: rotateY(180deg) rotateX(50deg); 
-      @media (min-width:765px){
-        padding: 5px;
+      @media (min-width:1370px){
+        width: calc(25% - 6px);
+        height: calc(25% - 6px);
+        margin: 3px;
       }
-      @media (min-width:810px){
-        padding: 3px;
+      .front-face,
+      .back-face { 
+        width: 100%;
+        height: 100%;
+        padding: 3px; 
+        position: absolute;
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        object-fit:cover;
+        @media (min-width:765px){
+          padding: 5px;
+        }
+        @media (min-width:810px){
+          padding: 3px;
+        }
+        @media (min-width:1020px){
+          padding: 5px;
+        }
       }
+      .angel {
+        background: linear-gradient(rgb(252, 254, 152), rgb(252, 254, 152), #fff);
+      }
+      .death {
+        background: radial-gradient( #fff 70%,rgb(6, 73, 27));
+      }
+      .red {
+        background-color: red;
+      }
+      .js_black {
+        background-color: rgb(45, 43, 43);
+      }
+      .front-face {
+        padding: 3px; 
+        transform: rotateY(180deg) rotateX(50deg); 
+        @media (min-width:765px){
+          padding: 5px;
+        }
+        @media (min-width:810px){
+          padding: 3px;
+        }
+      }
+      // .large {
+      //   object-fit: cover;
+      //   @media (min-width:416px){
+      //     object-fit: initial;
+      //   }
+      // }
+      // .small {
+      //   @media (min-width:765px){
+      //     object-fit: initial;
+      //   }
+      //   @media (min-width:1020px){
+      //     object-fit: cover;
+      //   }
+      //   @media (min-width:1370px){
+      //     object-fit: initial;
+      //   }
+      //   @media (min-height:1360px){
+      //     object-fit: initial;
+      //   }
+      // }
     }
-    // .large {
-    //   object-fit: cover;
-    //   @media (min-width:416px){
-    //     object-fit: initial;
-    //   }
-    // }
-    // .small {
-    //   @media (min-width:765px){
-    //     object-fit: initial;
-    //   }
-    //   @media (min-width:1020px){
-    //     object-fit: cover;
-    //   }
-    //   @media (min-width:1370px){
-    //     object-fit: initial;
-    //   }
-    //   @media (min-height:1360px){
-    //     object-fit: initial;
-    //   }
-    // }
   }
 }
 
