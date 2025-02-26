@@ -14,57 +14,186 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'New-Old-English';
+  src: local('New Old English'), local('New-Old-English'),
+  url('font/New-Old-English.ttf') format('truetype');
+  font-display: swap;
+}
+
 
 //-------------------------------------------------------------------------
 //*                          --- DEATH CARD ---
 //--------------------------------------------------------------------
 
 body {
-  font-family: 'Righteous';
+  font-family: 'New-Old-English';
   height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(84, 81, 81);
+  background-color: #444;
   overflow: hidden;
+  &.active {
+    background-color: #000;
+  }
 }
+
+.btnEnter {
+  font-family: 'New-Old-English';
+  position: absolute;
+  font-size: 2em;
+  color: #ff0000;
+  background-color: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  padding: 7px 13px 2px;
+  transform: scale(1.25);
+  z-index: 10000;
+  transition: transform .5s;
+  &:active {
+    color: #000;
+    background-color: rgba(255,255,255,0.1);
+  }
+  &.inactive {
+    transform: scale(0);
+  }
+}
+
+.splash-screen {
+  position: absolute;
+  inset: 10px; 
+  margin: auto; 
+  background: linear-gradient(35deg,
+    #000,#fff 20%,#dfdfdf 70%,#000 100%);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  mix-blend-mode: difference;
+  filter: contrast(1) invert(.1);
+  transition: opacity 2s;
+  overflow: hidden;
+  --destinationY: 120%;
+  &.menubarHidden {
+    inset: 0px; 
+    height: 90%; 
+    margin: 25px auto;
+  }
+  @media (orientation: landscape) {
+    --destinationY: 200%;
+    &.menubarHidden {
+      margin: 15px auto;
+    }
+  }
+  &.transfigure {
+    filter: initial;
+    mix-blend-mode: initial;
+    background: linear-gradient(55deg,
+      #024523, #fff, #024523);
+    box-shadow: 0 0 0 20px #000;
+  }
+  &.inactive {
+    opacity: 0;
+    animation: hideSplashScreen 1.5s forwards;
+  }
+  .deathCard {
+    position: absolute;
+    background-image: url('img/deathCard.svg');
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 95%;
+    @media (orientation: landscape) {
+      background-repeat: repeat-x;
+    }
+    &::before {
+      content: '';
+      z-index: 1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url('img/deathCard.svg');
+      background-repeat: no-repeat; 
+      background-position: center;
+      background-size: contain; 
+      mix-blend-mode: multiply;
+      left: -3px;
+      @media (orientation: landscape) {
+        background-repeat: repeat-x;
+        left: -1px;
+      }
+    }
+  }
+  canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    filter: blur(20px) contrast(40);
+    pointer-events: none;
+    opacity: .8;
+    z-index: 2000;
+    &.activate {
+      background-color: #000;
+    }
+  }
+}
+
+@keyframes hideSplashScreen {
+  to {
+    transform: translate(80px, var(--destinationY)) rotate(-15deg);
+  }
+}
+
+//* --------------------------------------------------------
 
 .game-message {
-  font-family: 'Righteous';
+  font-family: 'New-Old-English';
   position: absolute;
   z-index: 1;
-  font-size: 2.8rem;
+  font-size: 3.25rem; 
   font-weight: bold;
   letter-spacing: 1px;
-  text-shadow: 3px 3px 0 #fff, 3px -3px 0 #fff,
-  -3px 3px 0 #fff,-3px -3px 0 #fff;
+  -webkit-text-stroke: 6px #fff;
+  paint-order: stroke;
   visibility: hidden;
-}
-
-.game-clear {
-  color: rgb(0, 123, 255);
-}
-
-.game-over {
-  color: red;
+  &.game-clear {
+    color: #007bff;
+  }
+  &.game-over {
+    color: #f00;
+  }
+  &.visible {
+    visibility: visible;
+  }
 }
 
 .start-btn {
-  font-family: 'Secular-One';
+  font-family: 'New-Old-English';
   position: absolute;
   z-index: 1;
-  font-size: 1.2rem;
+  font-size: 1.4rem; 
   font-weight: bold;
   letter-spacing: 1px;
-  color: rgb(0, 0, 0);
+  color: #000;
   background-color: #fff;
-  border-radius: 20px;
-  padding: 10px 10px 8px;
+  border-radius: 18px;
+  padding: 10px 10px 6px;
   margin-top: 10px; 
   opacity: 0.5;
   visibility: hidden;
+  display: none; //*
+  &.activate {
+    display: block;
+  }
   &.active {
     margin-top: 100px; 
+  }
+  &.visible {
+    visibility: visible;
   }
 }
 
@@ -76,6 +205,11 @@ body {
   width: 90%;
   display: flex;
   justify-content: center;
+  pointer-events: none;
+  display: none; //*
+  &.activate {
+    display: flex;
+  }
   @media (max-width:374px){ // maxWidth
     top: 5px;
   }
@@ -129,26 +263,21 @@ body {
       width: 13%; 
     }
   }
+  .gauge-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: .1;
+    &.hidden {  
+      visibility: hidden;
+    }
+    &.activeCircle {
+      background-color: #f00;
+      opacity: 1;
+    }
+  }
 }
-
-.gauge-circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #fff;
-  opacity: .1;
-}
-
-.hidden {  //.gauge-circle 
-  visibility: hidden;
-}
-
-.js_activeCircle {
-  background-color: red;
-  opacity: 1;
-}
-
-
 
 //----------------------------------------------
 
@@ -159,6 +288,10 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  display: none; //*
+  &.activate {
+    display: flex;
+  }
   .card-unit { 
     width: 95%; 
     height: 95%; 
@@ -202,6 +335,9 @@ body {
       transition: transform .3s ease-in-out;
       &:active {
         transform: scale(.9);
+      }
+      &.flip {
+        transform: rotateY(180deg) rotateX(50deg); 
       }
       @media (min-width:416px){
         width: calc(12.5% - 6px);
@@ -256,10 +392,10 @@ body {
         background: radial-gradient( #fff 70%,rgb(6, 73, 27));
       }
       .red {
-        background-color: red;
+        background-color: #f00;
       }
-      .js_black {
-        background-color: rgb(45, 43, 43);
+      .black {
+        background-color: #2d2b2b;
       }
       .front-face {
         padding: 3px; 
@@ -295,13 +431,9 @@ body {
   }
 }
 
-.card.js_flip {
-  transform: rotateY(180deg) rotateX(50deg); 
-}
 
-.js_visible {
-  visibility: visible;
-}
+
+
 
 //--------------------------------------------------------------------
 //-------------------------------------------------------------------------
