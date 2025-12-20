@@ -201,7 +201,7 @@ body {
 
 .gauges-container {
   position: absolute;
-  top: 7px;
+  top: 0px;
   width: 90%;
   display: flex;
   justify-content: center;
@@ -210,29 +210,32 @@ body {
   &.activate {
     display: flex;
   }
-  @media (max-width:374px){ // maxWidth
+  @media (max-width: 710px) {
     top: 5px;
   }
-  @media (min-width:710px),(min-height:710px){
+  @media (min-width:710px), (min-height:710px) {
     top: 9px;
   }
-  @media (min-width:765px){
+  @media (hover: none) and (pointer: coarse) {
+    top: 0px; //* this scope is mobile device
+  }
+  @media (min-width:765px) {
     top: 50px;
   }
-  @media (min-width:810px){ 
+  @media (min-width:810px) { 
     top: 9px;
   }
-  @media (min-width:1020px){
+  @media (min-width:1020px) {
     top: 60px;
   }
-  @media (min-width:1360px){
+  @media (min-width:1360px) {
     top: 90px;
   }
-  @media (min-height:1360px){
+  @media (min-height:1360px) {
     top: 90px;
     width: 80%;
   }
-  @media (min-width:1370px){
+  @media (min-width:1370px) {
     top: 30px;
     width: 600px;
   } 
@@ -289,6 +292,9 @@ body {
   align-items: center;
   overflow: hidden;
   display: none; //*
+  @media (hover: none) and (pointer: coarse) { 
+    margin-top: 5px;
+  }
   &.activate {
     display: flex;
   }

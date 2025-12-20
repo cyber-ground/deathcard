@@ -187,7 +187,7 @@ body.active {
 
 .gauges-container {
   position: absolute;
-  top: 7px;
+  top: 0px;
   width: 90%;
   display: flex;
   justify-content: center;
@@ -197,7 +197,7 @@ body.active {
 .gauges-container.activate {
   display: flex;
 }
-@media (max-width: 374px) {
+@media (max-width: 710px) {
   .gauges-container {
     top: 5px;
   }
@@ -205,6 +205,11 @@ body.active {
 @media (min-width: 710px), (min-height: 710px) {
   .gauges-container {
     top: 9px;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  .gauges-container {
+    top: 0px;
   }
 }
 @media (min-width: 765px) {
@@ -297,6 +302,11 @@ body.active {
   align-items: center;
   overflow: hidden;
   display: none;
+}
+@media (hover: none) and (pointer: coarse) {
+  .container {
+    margin-top: 5px;
+  }
 }
 .container.activate {
   display: flex;
