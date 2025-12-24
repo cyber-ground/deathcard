@@ -134,7 +134,12 @@ body {
     background-color: transparent;
     filter: blur(20px) contrast(40);
     pointer-events: none;
-    opacity: .8;
+    @media(hover: hover) {
+      opacity: .8;
+    }
+    @media(hover: none) and (pointer: coarse) {
+      opacity: .4;
+    }
     z-index: 2000;
     &.activate {
       background-color: #000;

@@ -126,8 +126,17 @@ body.active {
   background-color: transparent;
   filter: blur(20px) contrast(40);
   pointer-events: none;
-  opacity: 0.8;
   z-index: 2000;
+}
+@media (hover: hover) {
+  .splash-screen canvas {
+    opacity: 0.8;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  .splash-screen canvas {
+    opacity: 0.4;
+  }
 }
 .splash-screen canvas.activate {
   background-color: #000;
