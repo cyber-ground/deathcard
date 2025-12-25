@@ -39,6 +39,23 @@ const container = document.querySelector('.container');
   var hauntedHowl = new Howl({src: ['mp3/haunted.mp3'], volume: 0.3});
   var timelineHowl = new Howl({src: ['mp3/timeline.mp3'], loop: true, volume: 1});
 
+  const targetHowls = [bgmHowl, flipCardHowl, unmatchedHowl, saviorHowl, guidanceHowl, providenceHowl, gameClearHowl, badOmenHowl, deathHowl, prologueHowl, gameOverHowl, hauntedHowl, timelineHowl];
+
+  let iid_howl = setInterval(() => { 
+    if(getLoadingState()) {
+      btnEnter.classList.add('visible');
+      clearInterval(iid_howl);
+    } 
+  }, 100);
+
+  function getLoadingState() {
+    let loadingState = true;
+    targetHowls.forEach(howl => {
+      loadingState = loadingState && howl._state === 'loaded';
+    });
+    return loadingState;
+  }
+
 const mobile = navigator.userAgent.match(/iPhone|Android.+Mobile/);
 let portrait = window.matchMedia('(orientation: portrait)').matches;
 let defaultHeight;

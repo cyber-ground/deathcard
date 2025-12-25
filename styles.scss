@@ -50,6 +50,10 @@ body {
   transform: scale(1.25);
   z-index: 10000;
   transition: transform .5s;
+  visibility: hidden;
+  &.visible {
+    visibility: visible;
+  }
   &:active {
     color: #000;
     background-color: rgba(255,255,255,0.1);
